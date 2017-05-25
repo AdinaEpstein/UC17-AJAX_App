@@ -14,8 +14,7 @@ function findCarrier(numId) {
                 // The request was successful!
                 displayCarrier(this.responseText);
             } else if (this.status === 404){
-                // No postal code found
-                displayCarrier('{ "carrier" : "none" }');
+                // No phone number found
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
@@ -33,12 +32,12 @@ function findCarrier(numId) {
  * @param {string} data JSON data representing carrier for given phone number
  */
 function displayCarrier(data){
-    var number = JSON.parse(data);
-    if(number.carrier === "none") {
+    var numb = JSON.parse(data);
+    if(numb.valid === false) {
         document.getElementById("number").className = "alert alert-warning";
         document.getElementById("number").innerHTML = "No carrier matches that number."
     } else {
         document.getElementById("number").className = "alert alert-success";
-        document.getElementById("number").innerHTML = number.carrier;
+        document.getElementById("number").innerHTML = numb.carrier;
     }
 }
