@@ -1,3 +1,7 @@
+/**
+ * Uses AJAX to query an internet data source for zip codes
+ * @param {string} numId The element id that has the phone number
+ */
 function findCarrier(numId) {
     // First get the phone number from the HTML textbox
     var num = document.getElementById(numId).value;
@@ -24,7 +28,10 @@ function findCarrier(numId) {
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
-
+/**
+ * Displays the carrier given the JSON data
+ * @param {string} data JSON data representing place for given phone number
+ */
 function displayCarrier(data){
     var place = JSON.parse(data);
     var carrier = place.carrier;
