@@ -30,16 +30,15 @@ function findCarrier(numId) {
 }
 /**
  * Displays the carrier given the JSON data
- * @param {string} data JSON data representing place for given phone number
+ * @param {string} data JSON data representing carrier for given phone number
  */
 function displayCarrier(data){
-    var place = JSON.parse(data);
-    var carrier = place.carrier;
-    if(place.carrier === "none") {
-        document.getElementById("place").className = "alert alert-warning";
-        document.getElementById("place").innerHTML = "No carrier matches that number."
+    var number = JSON.parse(data);
+    if(number.carrier === "none") {
+        document.getElementById("number").className = "alert alert-warning";
+        document.getElementById("number").innerHTML = "No carrier matches that number."
     } else {
-        document.getElementById("place").className = "alert alert-success";
-        document.getElementById("place").innerHTML = place.carrier;
+        document.getElementById("number").className = "alert alert-success";
+        document.getElementById("number").innerHTML = number.carrier;
     }
 }
